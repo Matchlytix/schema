@@ -56,6 +56,5 @@
       "type": "string"
     }
   },
-  "required": ["name", "vendor"],
-  "additionalProperties": false
+  "required": ["name", "vendor"]
 }
