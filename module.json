@@ -1,20 +1,18 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
+  "required": ["vendor", "name", "description"],
   "properties": {
+    "vendor": {
+      "type": "string"
+    },
     "name": {
       "type": "string"
     },
     "description": {
       "type": "string"
     },
-    "node_modules": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
-    },
-    "vendor": {
+    "version": {
       "type": "string"
     },
     "keywords": {
@@ -23,38 +21,53 @@
         "type": "string"
       }
     },
-    "assets": {
+    "author": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "node_modules": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "files": {
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["source", "destination", "type"],
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["directory", "file"]
+          "source": {
+            "type": "string"
           },
           "destination": {
             "type": "string"
           },
-          "source": {
-            "type": "string"
+          "type": {
+            "type": "string",
+            "enum": ["file", "directory"]
           }
-        },
-        "required": ["type", "destination", "source"],
-        "additionalProperties": false
+        }
       }
     },
-    "setup-command": {
-      "type": "string"
-    },
-    "database-seeders": {
+    "commands": {
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "homepage": {
-      "type": "string"
+    "seeders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
-  },
-  "required": ["name", "vendor"]
+  }
 }
